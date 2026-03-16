@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+read -p "Enter module number (e.g. 2): " mod_num
+mod_name=$(printf "mod-%02d" "$mod_num")
+mod_path="$(dirname "$0")/../$mod_name"
+
+if [ ! -d "$mod_path" ]; then
+  mkdir -p "$mod_path"
+  echo "Created $mod_name"    index_file="$t_path/index.html"
+
+else
+  echo "$mod_name already exists, skipping creation."
+fi
+
+read -p "How many assignments? " assign_count
+
+base_assignment_path="$(dirname "$0")/../mod-01/t-01"
+
+for ((i=1;i<=assign_count;i++)); do
+  t_name=$(printf "t-%02d" "$i")
+  t_path="$mod_path/$t_name"
+  if [ ! -d "$t_path" ]; then
+    mkdir -p "$t_path"
+    cp -r "$base_assignment_path"/* "$t_path"/
+    index_file="$t_path/index.html"
+    if [ -f "$index_file" ]; then
+      sed -i "s/Module 1/Module $mod_num/g" "$index_file"
+      sed -i "s/Task 1/Task $i/g" "$index_file"
+    fi
+    echo "Created $mod_name/$t_name"
+  else
+    echo "$mod_name/$t_name already exists, skipping."
+  fi
+done
