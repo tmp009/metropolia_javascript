@@ -33,7 +33,7 @@ const showResults = (jsonResponse) => {
     if (itemShow.image) {
       image.src = itemShow.image.medium;
     } else {
-      image.src = "./placeholder.png";
+      image.src = "https://placehold.co/210x295?text=Not%20Found";
     }
     image.alt = itemShow.name;
 
