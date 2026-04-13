@@ -1,0 +1,28 @@
+#map {
+  height: 400px;
+  width: 100%;
+  margin-top: 1em;
+}
+body {
+  font-family: sans-serif;
+  max-width: 600px;
+  margin: 2em auto;
+}
+.info {
+  margin-top: 1em;
+}
+form {
+  display: flex;
+  gap: 0.5em;
+}
+input[type="text"] {
+  flex: 1;
+  padding: 0.5em;
+}
+button {
+  padding: 0.5em 1em;
+}
+.error {
+  color: #b00;
+  margin-top: 1em;
+}
